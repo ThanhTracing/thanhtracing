@@ -1,0 +1,83 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build (Debug)",
+            "type": "shell",
+            "command": "reset;cd ..;make debug",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc",
+            "windows":{
+                "command": "cd ..;New-Item -Force -ItemType directory -Path proj_debug;cd proj_debug;cmake -A x64 ..;cmake --build . --config Debug"
+            }
+        },
+        {
+            "label": "Re-Build (Debug)",
+            "type": "shell",
+            "command": "reset;cd ..;rm -rf proj_debug;make debug",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc",
+            "windows":{
+                "command": "cd ..;New-Item -Force -ItemType directory -Path proj_debug;cd proj_debug;cmake -A x64 ..;cmake --build . --config Debug --target clean; cmake --build . --config Debug"
+            }
+        },
+        {
+            "label": "Build (Release)",
+            "type": "shell",
+            "command": "cd ..;make",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc",
+            "windows":{
+                "command": "cd ..;New-Item -Force -ItemType directory -Path proj_release;cd proj_release;cmake -A x64 ..;cmake --build . --config Release"
+            }
+        },
+        {
+            "label": "Re-Build (Release)",
+            "type": "shell",
+            "command": "reset;cd ..;rm -rf proj_release;make",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc",
+            "windows":{
+                "command": "cd ..;New-Item -Force -ItemType directory -Path proj_release;cd proj_release;cmake -A x64 ..;cmake --build . --config Release --target clean; cmake --build . --config Release"
+            }
+        },
+        {
+            "label": "Build (Release with Debug Info)",
+            "type": "shell",
+            "command": "reset;cd ..;make relwithdebinfo",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc",
+            "windows":{
+                "command": "cd ..;New-Item -Force -ItemType directory -Path proj_relwithdebinfo;cd proj_relwithdebinfo;cmake --build . --config RelWithDebInfo"
+            }
+        },
+        {
+            "label": "Re-Build (Release with Debug Info)",
+            "type": "shell",
+            "command": "reset;cd ..;rm -rf proj_relwithdebinfo;make relwithdebinfo",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc",
+            "windows":{
+                "command": "cd ..;New-Item -Force -ItemType directory -Path proj_relwithdebinfo;cd proj_relwithdebinfo;cmake -A x64 ..;cmake --build . --config RelWithDebInfo --target clean; cmake --build . --config RelWithDebInfo"
+            }
+        }
+    ]
+}
